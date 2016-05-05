@@ -16,16 +16,11 @@ class TreeTableCellData extends ImmComponent { // eslint-disable-line no-unused-
     super(props);
     this.onChange = this.onChange.bind(this);
     this.onBlur = this.onBlur.bind(this);
-    // this.state = { immutable: Map( // eslint-disable-line new-cap
-    //   {
-    //     mode: 'display', // or 'edit'
-    //     value: props.value
-    //   }
-    // )};
-
-    this.state = { immutable: Map(
+    this.handleDoubleClick = this.handleDoubleClick.bind(this);
+    this.state = { immutable: Map( // eslint-disable-line new-cap
       {
-        value: this.props.value
+        mode: 'display', // or 'edit'
+        value: props.value
       }
     )};
   }
@@ -43,32 +38,52 @@ class TreeTableCellData extends ImmComponent { // eslint-disable-line no-unused-
     if (editFunc) {
       editFunc(row, column.id, value.amount);
     }
+    this.setImmState({mode: 'display'});
   }
 
   onChange (event) {
+    const eventValue = event.target.value;
     const value = this.state.immutable.get('value');
-    const newValue = value.set('amount', event.target.value);
+    const newValue = value.set('amount', eventValue);
+
     this.setImmState({
       value: newValue
     });
   }
 
+  handleDoubleClick () {
+    this.setImmState({mode: 'edit'});
+    this.refs.input.setSelectionRange(0, this.refs.input.value.length);
+    setTimeout(() => this.refs.input.focus(), 10);
+  }
+
   render () {
+    const mode = this.state.immutable.get('mode');
     const value = this.state.immutable.get('value');
-    let amount = 0;
-    if (value) {
-      amount = value.amount;
+    const amount = value ? value.amount : 0;
+    const editable = true; // TODO: row.edtable && column.editable
+
+    const spanDisplay = (mode === 'display') ? 'block' : 'none';
+    const inputDisplay = (mode === 'display') ? 'none' : 'block';
+
+    if (editable) {
+      return (
+        <div onDoubleClick={this.handleDoubleClick} className="cell">
+          <div className="cell-amount" style={{display: spanDisplay}}>{amount}</div>
+          <input value={amount}
+            onBlur={this.onBlur}
+            ref="input"
+            style={{display: inputDisplay}}
+            className="form-control"
+            onChange={this.onChange}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className="cell">{amount}</div>
+      );
     }
-    // <input
-        //   onChange={this.onChange}
-        //   onBlur={this.onBlur}
-        //   className='cell form-control'
-        //   value={amount} />
-    return (
-      <div className='cell'>
-        <span>{amount}</span>
-      </div>
-    );
   }
 }
 
