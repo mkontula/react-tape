@@ -1,5 +1,6 @@
 import debug from 'debug';
 import cssns from '../../utils/cssnsConfig';
+import shallowequal from 'shallowequal';
 const {React} = cssns('TreeTable2');
 
 import { PropTypes } from 'react';
@@ -26,9 +27,11 @@ class TreeTableCellData extends ImmComponent { // eslint-disable-line no-unused-
   }
 
   componentWillReceiveProps (newProps) {
-    this.setImmState({
-      value: newProps.value
-    });
+    if (!shallowequal(this.props, newProps)) {
+      this.setImmState({
+        value: newProps.value
+      });
+    }
   }
 
   onBlur () {
