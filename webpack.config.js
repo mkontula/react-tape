@@ -46,7 +46,7 @@ module.exports = {
         loader: 'file'
       },
       {
-        test: /\.json$/, exclude: /node_modules/, loader: 'json' 
+        test: /\.json$/, exclude: /node_modules/, loader: 'json'
       }
     ]
   },
