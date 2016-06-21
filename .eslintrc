@@ -95,7 +95,7 @@
     "no-implicit-coercion": 2,           // disallow the type conversions with shorter notations
     "no-implicit-globals": 2,           // disallow var and named functions in global scope
     "no-implied-eval": 2,               // disallow use of eval()-like methods
-    "no-invalid-this": 2,               // disallow this keywords outside of classes or class-like objects
+    "no-invalid-this": 0,               // disallow this keywords outside of classes or class-like objects
     "no-iterator": 2,                   // disallow usage of __iterator__ property
     "no-labels": 2,                     // disallow use of labels for anything other then loops and switches
     "no-lone-blocks": 2,                // disallow unnecessary nested blocks
@@ -177,7 +177,7 @@
     "id-length": 0,                             // enforce minimum and maximum identifier lengths (variable names, property names etc.)
     "id-match": 0,                              // require identifiers to match the provided regular expression
     "indent": [2, 2, {"SwitchCase": 1}],        // specify tab or space width for your code
-    "jsx-quotes": 2,                            // specify whether double or single quotes should be used in JSX attributes
+    "jsx-quotes": 0,                            // specify whether double or single quotes should be used in JSX attributes
     "key-spacing": 2,                           // enforce spacing between keys and values in object literal properties
     "keyword-spacing": 2,                       // enforce spacing before and after keywords
     "linebreak-style": 0,                       // enforce linebreak style
@@ -266,7 +266,7 @@
 
     // React
     "react/display-name": 0,              // Prevent missing displayName in a React component definition
-    "react/forbid-prop-types": 2,         // Forbid certain propTypes
+    "react/forbid-prop-types": 0,         // Forbid certain propTypes
     "react/no-danger": 2,                 // Prevent usage of dangerous JSX properties
     "react/no-deprecated": 2,             // Prevent usage of deprecated methods
     "react/no-did-mount-set-state": 2,    // Prevent usage of setState in componentDidMount
@@ -288,8 +288,8 @@
     "react/wrap-multilines": 2,              // Prevent missing parentheses around multilines JSX (fixable)
 
     // JSX
-    "react/jsx-boolean-value": [2, "always"], // Enforce boolean attributes notation in JSX (fixable)
-    "react/jsx-closing-bracket-location": 2,  // Validate closing bracket location in JSX
+    "react/jsx-boolean-value": [0, "never"], // Enforce boolean attributes notation in JSX (fixable)
+    "react/jsx-closing-bracket-location": 0,  // Validate closing bracket location in JSX
     "react/jsx-curly-spacing": 2,             // Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
     "react/jsx-equals-spacing": 2,            // Enforce or disallow spaces around equal signs in JSX attributes
     "react/jsx-handler-names": 0,             // Enforce event handler naming conventions in JSX

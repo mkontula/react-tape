@@ -2,3 +2,13 @@ body {
   font-family: 'Open Sans', Arial, sans-serif;
 }
 .cblue {color: blue;}
+
+.nav a {margin-left: 10px}
+
+td {
+  padding: 10px;
+}
+
+td.active {
+  background-color: lightblue;
+}
