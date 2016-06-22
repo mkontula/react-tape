@@ -89,7 +89,8 @@ export default class MouseTableRow extends React.Component {
           const active = selectionStart !== undefined &&
             selectionEnd !== undefined &&
             index >= selectionStart && index <= selectionEnd;
-
+          const first = index === selectionStart;
+          const last = index === selectionEnd;
           return (
             <MouseTableCell key={`td-${row}-${col}`}
               col={col}
@@ -97,7 +98,9 @@ export default class MouseTableRow extends React.Component {
               colIndex={index}
               onMouseEnter={this.onMouseEnterCell}
               captureMouse={mouseDown}
-              active={active} />
+              active={active}
+              first={first}
+              last={last} />
           );
         }
         )}

@@ -9,33 +9,26 @@ body {
 .mouse-table-row-header, .mouse-table-cell, .mouse-table-column-header {
   display: flex;
   flex: 1;
-  border: 1px solid transparent;
   border-bottom: 1px solid silver;
-  border-left: 0;
   padding: 5px;
   justify-content: center;
 }
 
 .active {
-  border-left: 0;
   border-top: 1px solid blue;
   border-bottom: 1px solid blue;
-  
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-:not(.active) + .active { 
+.active.first { 
   border-left: 1px solid blue !important;
+  padding-left: 4px;
 }
-.active + :not(.active) { 
-  border-left: 1px solid blue; 
-} 
-
-.active:last-child {
+.active.last { 
   border-right: 1px solid blue;
-}
-.active:first-child {
-  border-left: 1px solid blue;
-}
+  padding-right: 4px; 
+} 
 
 .mouse-table {
   display: flex;
