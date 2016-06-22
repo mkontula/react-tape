@@ -37,13 +37,14 @@ export default class MouseTableCell extends React.Component {
 
   render () {
     const css = classNames({
-      active: this.props.active
+      active: this.props.active,
+      'mouse-table-cell': true
     })
     return (
-      <td className={css}
+      <div className={css}
         onMouseMove={this.onMouseMove}>
           {`${this.props.row}-${this.props.col}`}
-      </td>
+      </div>
     );
   }
 }

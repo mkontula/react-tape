@@ -75,19 +75,16 @@ export default class MouseTableRow extends React.Component {
   }
 
   render () {
-    const css = classNames({
-      active: this.state.mouseDown
-    })
     const {row, cols} = this.props;
     const {selectionStart, selectionEnd, mouseDown} = this.state;
     return (
-      <tr className={css}
+      <div className='mouse-table-row'
         onMouseDown={this.onMouseDown}
         onMouseUp={this.onMouseUp}
         onMouseExit={this.onMouseExit}>
-        <th>
+        <div className='mouse-table-row-header'>
           {row}
-        </th>
+        </div>
         {cols.map((col, index) => {
           const active = selectionStart !== undefined &&
             selectionEnd !== undefined &&
@@ -104,9 +101,9 @@ export default class MouseTableRow extends React.Component {
           );
         }
         )}
-        <td>{selectionStart}</td>
-        <td>{selectionEnd}</td>
-      </tr>
+        <div className='mouse-table-cell'>{selectionStart || -1}</div>
+        <div className='mouse-table-cell'>{selectionEnd || -1}</div>
+      </div>
     );
   }
 }

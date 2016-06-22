@@ -5,10 +5,55 @@ body {
 
 .nav a {margin-left: 10px}
 
-td {
-  padding: 10px;
+
+.mouse-table-row-header, .mouse-table-cell, .mouse-table-column-header {
+  display: flex;
+  flex: 1;
+  border: 1px solid transparent;
+  border-bottom: 1px solid silver;
+  border-left: 0;
+  padding: 5px;
+  justify-content: center;
 }
 
-td.active {
-  background-color: lightblue;
+.active {
+  border-left: 0;
+  border-top: 1px solid blue;
+  border-bottom: 1px solid blue;
+  
 }
+
+:not(.active) + .active { 
+  border-left: 1px solid blue !important;
+}
+.active + :not(.active) { 
+  border-left: 1px solid blue; 
+} 
+
+.active:last-child {
+  border-right: 1px solid blue;
+}
+.active:first-child {
+  border-left: 1px solid blue;
+}
+
+.mouse-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.mouse-table-header {
+  display: flex;
+  flex-direction: row nowrap;
+}
+
+.mouse-table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.mouse-table-row {
+  display: flex;
+  flex-direction: row nowrap;
+}
+
