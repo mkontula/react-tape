@@ -1,0 +1,50 @@
+body {
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+.cblue {color: blue;}
+
+.nav a {margin-left: 10px}
+
+$cellPadding: 5px;
+$selectionBorderWidth: 1px;
+$selectionPaddingWidth: $cellPadding - $selectionBorderWidth;
+
+.mouse-table {
+  display: flex;
+  flex-direction: column;
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-header, &-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &-row-header, &-cell, .mouse-table-column-header {
+    display: flex;
+    flex: 1;
+    border-bottom: 1px solid silver;
+    padding: 5px;
+    justify-content: center;  
+  }
+}
+
+.act.fc { 
+  border-left: $selectionBorderWidth solid blue !important;
+  padding-left: $selectionPaddingWidth;
+}
+.act.lc { 
+  border-right: $selectionBorderWidth solid blue;
+  padding-right: $selectionPaddingWidth; 
+}
+.act.fr {
+  border-top: $selectionBorderWidth solid blue;
+  padding-top: $selectionPaddingWidth;
+} 
+.act.lr {
+  border-bottom: $selectionBorderWidth solid blue;
+  padding-bottom: $selectionPaddingWidth;
+}

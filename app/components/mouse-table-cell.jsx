@@ -6,10 +6,12 @@ export default class MouseTableCell extends React.Component {
   static propTypes = {
     col: PropTypes.string,
     row: PropTypes.string,
-    first: PropTypes.bool,
-    last: PropTypes.bool,
-    active: PropTypes.bool,
-    colIndex: PropTypes.number
+    firstRow: PropTypes.bool,
+    lastRow: PropTypes.bool,
+    firstCol: PropTypes.bool,
+    lastCol: PropTypes.bool,
+    colIndex: PropTypes.number,
+    rowIndex: PropTypes.number
   }
 
   constructor (props) {
@@ -21,7 +23,7 @@ export default class MouseTableCell extends React.Component {
 
   onMouseMove = event => {
     if (this.props.captureMouse) {
-      this.props.onMouseEnter(this.props.row, this.props.col, this.props.colIndex);
+      this.props.onMouseEnter(this.props.rowIndex, this.props.colIndex);
     }
     event.preventDefault();
   }
@@ -40,9 +42,11 @@ export default class MouseTableCell extends React.Component {
 
   render () {
     const css = classNames({
-      active: this.props.active,
-      first: this.props.first,
-      last: this.props.last,
+      fc: this.props.firstCol,
+      lc: this.props.lastCol,
+      fr: this.props.firstRow,
+      lr: this.props.lastRow,
+      act: this.props.active,
       'mouse-table-cell': true
     })
     return (
